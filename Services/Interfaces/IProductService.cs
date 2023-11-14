@@ -6,7 +6,10 @@ namespace TPI_ProgramacionIII.Services.Interfaces
 {
     public interface IProductService
     {
-        List<ProductDto> GetProducts();
-        ProductDto GetProductById(int id);
+        List<Product> GetProducts();
+        Product GetProductById(int id);
+        int CreateProduct(Product product);
+        void DeleteProduct(int id);
+        int UpdateProduct(Product product);
     }
 }

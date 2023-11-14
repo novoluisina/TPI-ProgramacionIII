@@ -26,7 +26,8 @@ namespace TPI_ProgramacionIII.Controllers
             try
             {
                 return Ok(products);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -35,55 +36,94 @@ namespace TPI_ProgramacionIII.Controllers
 
 
         [HttpGet("{id}")]
-
         public IActionResult GetProductById(int id)
         {
             var product = _productService.GetProductById(id);
 
             if (product == null)
             {
-                return NotFound(); // 404
+                return NotFound($"El producto con el ID: {id} no fue encontrado"); 
             }
 
             return Ok(product);
         }
 
 
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteProduct(int id)
-        //{
+        [HttpPost]
+        public IActionResult CreateProduct([FromBody] ProductDto productDto)
+        {
+            try
+            {
+                var product = new Product()
+                {
+                    Name = productDto.Name,
+                    Price = productDto.Price,
+                    Stock = productDto.Stock
+                };
+                if (product == null)
+                {
+                    return BadRequest("Producto no creado");
+                }
+                int id = _productService.CreateProduct(product);
 
-        //    var deletedProduct = _productService.DeleteProduct(id);
+                return Ok($"Producto creado exitosamente con id: {id}");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
-        //    if (deletedProduct==null)
-        //    {
-        //        return NotFound(); 
-        //    }
-
-        //    return Ok(deletedProduct); 
-        //}
-
-        //[HttpPost]
-        //public IActionResult AddProduct([FromBody] ProductDto productDto)
-        //{
-
-        //    var addedProduct = _productService.AddProduct(productDto);
-
-        //    try
-        //    {
-        //        return Ok(addedProduct);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
+        }
 
 
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult DeleteProduct([FromRoute] int id)
+        {
+            try
+            {
+                var existingProduct = _productService.GetProductById(id);
 
-        //[HttpPut]
-        //{
+                if (existingProduct == null)
+                {
+                    return NotFound($"No se encontró ningún producto con el ID: {id}");
+                }
 
-        //}
+                _productService.DeleteProduct(id);
+                return Ok($"Producto con ID: {id} eliminado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        //REVISAR
+        [HttpPut("{id}")]
+        public IActionResult UpdateProduct([FromRoute] int id, [FromBody] ProductDto product)
+        {
+            try
+            {
+                var productToUpdate = new Product()
+                {
+                    Id = id,
+                    Name = product.Name,
+                    Price = product.Price,
+                    Stock = product.Stock
+                };
+
+                int updatedProductId = _productService.UpdateProduct(productToUpdate);
+
+                if (updatedProductId == 0)
+                {
+                    return NotFound($"Producto con ID {id} no encontrado");
+                }
+
+                return Ok(productToUpdate);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al actualizar el producto: {ex.Message}");
+            }
+        }
     }
 }

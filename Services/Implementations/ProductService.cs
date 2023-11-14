@@ -1,55 +1,69 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 using TPI_ProgramacionIII.Data.Entities;
 using TPI_ProgramacionIII.Data.Models;
 using TPI_ProgramacionIII.DBContexts;
-using TPI_ProgramacionIII.Repository.Interfaces;
 using TPI_ProgramacionIII.Services.Interfaces;
 
 namespace TPI_ProgramacionIII.Services.Implementations
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRepository _productRepository;
+        private readonly ECommerceContext _context;
 
-        public ProductService(IProductRepository productRepository)
+        public ProductService(ECommerceContext context)
         {
-            _productRepository = productRepository;
+            _context = context;
         }
 
-        public List<ProductDto> GetProducts()
+        public List<Product> GetProducts()
         {
-            var products = _productRepository.GetProducts();
-
-            // Mapeo de Product a ProductDto
-            var productDtos = products.Select(p => new ProductDto
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Price = p.Price
-            }).ToList();
-
-            return productDtos;
+            return _context.Products.ToList();
         }
 
-        public ProductDto GetProductById(int id)
+        public Product GetProductById(int id)
         {
-            var product = _productRepository.GetProductById(id);
+            return _context.Products.FirstOrDefault(p => p.Id == id);
+        }
 
-            if (product == null)
+        public int CreateProduct(Product product)
+        {
+            _context.Products.Add(product);
+            _context.SaveChanges();
+
+            return (product.Id);
+        }
+
+        public void DeleteProduct(int id)
+        {
+            var productToDelete = _context.Products.SingleOrDefault(p => p.Id == id);
+            
+            if (productToDelete != null)
             {
-                return null;
+                _context.Products.Remove(productToDelete);
+                _context.SaveChanges();
+            }
+        }
+
+        public int UpdateProduct(Product product)
+        {
+
+            var productToUpdate = _context.Products.SingleOrDefault(u => u.Id == product.Id);
+
+            if (productToUpdate == null)
+            {
+                return 0;
             }
 
-            var productDto = new ProductDto
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Price = product.Price,
-            };
+            productToUpdate.Name = product.Name;
+            productToUpdate.Price = product.Price;
 
-            return productDto;
+            _context.Update(productToUpdate);
+            _context.SaveChanges();
+            return productToUpdate.Id;
+
         }
 
-    }    
+    }
 }

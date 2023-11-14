@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using TPI_ProgramacionIII.DBContexts;
-using TPI_ProgramacionIII.Repository.Implementations;
-using TPI_ProgramacionIII.Repository.Interfaces;
 using TPI_ProgramacionIII.Services.Implementations;
 using TPI_ProgramacionIII.Services.Interfaces;
 
@@ -16,11 +14,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ECommerceContext>(dbContextOptions => dbContextOptions.UseSqlite(
     builder.Configuration["DB:ConnectionString"]));
-
-
-//regionRepositories
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-//endregion
 
 
 //#regionServices
