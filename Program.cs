@@ -18,7 +18,8 @@ builder.Services.AddDbContext<ECommerceContext>(dbContextOptions => dbContextOpt
 
 //#regionServices
 builder.Services.AddScoped<IProductService, ProductService>();
-
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 //#endregion
 
 builder.Services.AddHttpContextAccessor();

@@ -46,23 +46,11 @@ namespace TPI_ProgramacionIII.Services.Implementations
             }
         }
 
-        public int UpdateProduct(Product product)
+        public Product UpdateProduct(Product product)
         {
-
-            var productToUpdate = _context.Products.SingleOrDefault(u => u.Id == product.Id);
-
-            if (productToUpdate == null)
-            {
-                return 0;
-            }
-
-            productToUpdate.Name = product.Name;
-            productToUpdate.Price = product.Price;
-
-            _context.Update(productToUpdate);
+            _context.Update(product);
             _context.SaveChanges();
-            return productToUpdate.Id;
-
+            return product;
         }
 
     }

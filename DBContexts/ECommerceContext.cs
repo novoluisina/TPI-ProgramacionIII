@@ -67,7 +67,6 @@ namespace TPI_ProgramacionIII.DBContexts
                     Password = "123456",
                     Id = 4,
                     Role = "admin"
-        
                 },
                 new Admin
                 {

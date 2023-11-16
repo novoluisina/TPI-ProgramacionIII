@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TPI_ProgramacionIII.Data.Entities;
 using TPI_ProgramacionIII.Data.Models;
 using TPI_ProgramacionIII.Services.Interfaces;
@@ -52,6 +50,10 @@ namespace TPI_ProgramacionIII.Controllers
         [HttpPost]
         public IActionResult CreateProduct([FromBody] ProductDto productDto)
         {
+            if (productDto.Name == null || productDto.Price <= 0)
+            {
+                return BadRequest("Producto no creado, por favor completar los campos");
+            }
             try
             {
                 var product = new Product()
@@ -60,10 +62,7 @@ namespace TPI_ProgramacionIII.Controllers
                     Price = productDto.Price,
                     Stock = productDto.Stock
                 };
-                if (product == null)
-                {
-                    return BadRequest("Producto no creado");
-                }
+   
                 int id = _productService.CreateProduct(product);
 
                 return Ok($"Producto creado exitosamente con id: {id}");
@@ -97,28 +96,23 @@ namespace TPI_ProgramacionIII.Controllers
             }
         }
 
-        //REVISAR
+
         [HttpPut("{id}")]
-        public IActionResult UpdateProduct([FromRoute] int id, [FromBody] ProductDto product)
+        public IActionResult UpdateProduct([FromRoute] int id, [FromBody] ProductPutDto product)
         {
+            var productToUpdate = _productService.GetProductById(id);
+
             try
             {
-                var productToUpdate = new Product()
-                {
-                    Id = id,
-                    Name = product.Name,
-                    Price = product.Price,
-                    Stock = product.Stock
-                };
+                productToUpdate.Price = product.Price;
+                productToUpdate.Stock = product.Stock;
 
-                int updatedProductId = _productService.UpdateProduct(productToUpdate);
-
-                if (updatedProductId == 0)
+                if (productToUpdate == null)
                 {
                     return NotFound($"Producto con ID {id} no encontrado");
                 }
-
-                return Ok(productToUpdate);
+                productToUpdate = _productService.UpdateProduct(productToUpdate);
+                return Ok($"Producto actualizado exitosamente");
             }
             catch (Exception ex)
             {

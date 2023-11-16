@@ -1,6 +1,34 @@
-﻿namespace TPI_ProgramacionIII.Services.Implementations
+﻿using TPI_ProgramacionIII.Data.Entities;
+using TPI_ProgramacionIII.DBContexts;
+using TPI_ProgramacionIII.Services.Interfaces;
+
+namespace TPI_ProgramacionIII.Services.Implementations
 {
-    public class AdminService
+    public class AdminService : IAdminService
     {
+        private readonly ECommerceContext _context;
+
+        public AdminService(ECommerceContext context)
+        {
+            _context = context;
+        }
+
+        public List<User> GetAdmins()
+        {
+            return _context.Users.Where(p => p.UserType == "Admin").ToList();
+        }
+
+        public Admin GetAdminById(int id)
+        {
+            return _context.Admins.FirstOrDefault(p => p.Id == id);
+        }
+
+        public int CreateAdmin(Admin admin)
+        {
+            _context.Admins.Add(admin);
+            _context.SaveChanges();
+
+            return (admin.Id);
+        }
     }
 }

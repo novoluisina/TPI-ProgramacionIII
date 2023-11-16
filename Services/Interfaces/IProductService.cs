@@ -10,6 +10,6 @@ namespace TPI_ProgramacionIII.Services.Interfaces
         Product GetProductById(int id);
         int CreateProduct(Product product);
         void DeleteProduct(int id);
-        int UpdateProduct(Product product);
+        Product UpdateProduct(Product product);
     }
 }

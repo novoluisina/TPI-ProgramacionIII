@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TPI_ProgramacionIII.Migrations
 {
     /// <inheritdoc />
-    public partial class inicial : Migration
+    public partial class Inicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,6 +40,7 @@ namespace TPI_ProgramacionIII.Migrations
                     Password = table.Column<string>(type: "TEXT", nullable: false),
                     UserName = table.Column<string>(type: "TEXT", nullable: false),
                     UserType = table.Column<string>(type: "TEXT", nullable: false),
+                    State = table.Column<bool>(type: "INTEGER", nullable: false),
                     Role = table.Column<string>(type: "TEXT", nullable: true),
                     Address = table.Column<string>(type: "TEXT", nullable: true)
                 },
@@ -107,21 +108,21 @@ namespace TPI_ProgramacionIII.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Address", "Email", "LastName", "Name", "Password", "UserName", "UserType" },
+                columns: new[] { "Id", "Address", "Email", "LastName", "Name", "Password", "State", "UserName", "UserType" },
                 values: new object[,]
                 {
-                    { 1, "Rivadavia 111", "ngomez@gmail.com", "Gomez", "Nicolas", "123456", "ngomez_cliente", "Client" },
-                    { 2, "J.b.justo 111", "Jperez@gmail.com", "Perez", "Juan", "123456", "jperez", "Client" },
-                    { 3, "San Martin 111", "jgarcia@gmail.com", "Garcia", "Jose", "123456", "jgarcia", "Client" }
+                    { 1, "Rivadavia 111", "ngomez@gmail.com", "Gomez", "Nicolas", "123456", true, "ngomez_cliente", "Client" },
+                    { 2, "J.b.justo 111", "Jperez@gmail.com", "Perez", "Juan", "123456", true, "jperez", "Client" },
+                    { 3, "San Martin 111", "jgarcia@gmail.com", "Garcia", "Jose", "123456", true, "jgarcia", "Client" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Email", "LastName", "Name", "Password", "Role", "UserName", "UserType" },
+                columns: new[] { "Id", "Email", "LastName", "Name", "Password", "Role", "State", "UserName", "UserType" },
                 values: new object[,]
                 {
-                    { 4, "ngomez@gmail.com", "Gomez", "Nicolas", "123456", "admin", "ngomez_admin", "Admin" },
-                    { 5, "bdiaz@gmail.com", "Bruno", "Diaz", "123456", "admin", "bdiaz", "Admin" }
+                    { 4, "ngomez@gmail.com", "Gomez", "Nicolas", "123456", "admin", true, "ngomez_admin", "Admin" },
+                    { 5, "bdiaz@gmail.com", "Bruno", "Diaz", "123456", "admin", true, "bdiaz", "Admin" }
                 });
 
             migrationBuilder.CreateIndex(

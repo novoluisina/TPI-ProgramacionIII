@@ -11,8 +11,8 @@ using TPI_ProgramacionIII.DBContexts;
 namespace TPI_ProgramacionIII.Migrations
 {
     [DbContext(typeof(ECommerceContext))]
-    [Migration("20231108214925_inicial")]
-    partial class inicial
+    [Migration("20231115202211_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -125,6 +125,9 @@ namespace TPI_ProgramacionIII.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("State")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -160,6 +163,7 @@ namespace TPI_ProgramacionIII.Migrations
                             LastName = "Gomez",
                             Name = "Nicolas",
                             Password = "123456",
+                            State = true,
                             UserName = "ngomez_admin",
                             Role = "admin"
                         },
@@ -170,6 +174,7 @@ namespace TPI_ProgramacionIII.Migrations
                             LastName = "Bruno",
                             Name = "Diaz",
                             Password = "123456",
+                            State = true,
                             UserName = "bdiaz",
                             Role = "admin"
                         });
@@ -193,6 +198,7 @@ namespace TPI_ProgramacionIII.Migrations
                             LastName = "Gomez",
                             Name = "Nicolas",
                             Password = "123456",
+                            State = true,
                             UserName = "ngomez_cliente",
                             Address = "Rivadavia 111"
                         },
@@ -203,6 +209,7 @@ namespace TPI_ProgramacionIII.Migrations
                             LastName = "Perez",
                             Name = "Juan",
                             Password = "123456",
+                            State = true,
                             UserName = "jperez",
                             Address = "J.b.justo 111"
                         },
@@ -213,6 +220,7 @@ namespace TPI_ProgramacionIII.Migrations
                             LastName = "Garcia",
                             Name = "Jose",
                             Password = "123456",
+                            State = true,
                             UserName = "jgarcia",
                             Address = "San Martin 111"
                         });
