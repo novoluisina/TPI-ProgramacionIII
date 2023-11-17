@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Luisina TUP\\ProgramacionIII\\TPI-ProgramacionIII\\E-Commerce.API.csproj": {}
+    "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programación\\3er Cuatrimestre\\Programacion III\\TPI-ProgramacionIII\\E-Commerce.API.csproj": {}
   },
   "projects": {
-    "C:\\Luisina TUP\\ProgramacionIII\\TPI-ProgramacionIII\\E-Commerce.API.csproj": {
+    "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programación\\3er Cuatrimestre\\Programacion III\\TPI-ProgramacionIII\\E-Commerce.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Luisina TUP\\ProgramacionIII\\TPI-ProgramacionIII\\E-Commerce.API.csproj",
+        "projectUniqueName": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programación\\3er Cuatrimestre\\Programacion III\\TPI-ProgramacionIII\\E-Commerce.API.csproj",
         "projectName": "E-Commerce.API",
-        "projectPath": "C:\\Luisina TUP\\ProgramacionIII\\TPI-ProgramacionIII\\E-Commerce.API.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Luisina TUP\\ProgramacionIII\\TPI-ProgramacionIII\\obj\\",
+        "projectPath": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programación\\3er Cuatrimestre\\Programacion III\\TPI-ProgramacionIII\\E-Commerce.API.csproj",
+        "packagesPath": "C:\\Users\\mate_\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programación\\3er Cuatrimestre\\Programacion III\\TPI-ProgramacionIII\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mate_\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,8 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://www.nuget.org/api/v2": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {

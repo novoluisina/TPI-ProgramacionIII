@@ -45,6 +45,16 @@ namespace TPI_ProgramacionIII.Services.Implementations
             return response;
         }
 
+
+        public void DeleteUser(int Id)
+        {
+            User? userToDelete = _context.Users.FirstOrDefault(u => u.Id == Id);
+            userToDelete.State = false;
+            _context.Update(userToDelete);
+            _context.SaveChanges();
+
+        }
+
         public int CreateUser(User user)
         {
             _context.Add(user);
@@ -52,21 +62,6 @@ namespace TPI_ProgramacionIII.Services.Implementations
             return user.Id;
         }
 
-        public void UpdateUser(User user)
-        {
-            _context.Update(user);
-            _context.SaveChanges();
-
-        }
-
-        public void DeleteUser(int userId)
-        {
-            User? userToDelete = _context.Users.FirstOrDefault(u => u.Id == userId);
-            userToDelete.State = false;
-            _context.Update(userToDelete);
-            _context.SaveChanges();
-
-        }
 
     }
 }

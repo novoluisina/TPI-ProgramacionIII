@@ -6,6 +6,6 @@ namespace TPI_ProgramacionIII.Services.Interfaces
     {
         List<User> GetAdmins();
         Admin GetAdminById(int id);
-        int CreateAdmin(Admin admin);
+        Admin UpdateAdmin(Admin admin);
     }
 }

@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Data",
+    "\\Data\\Models"
   ],
+  "SelectedNode": "\\E-Commerce.sln",
   "PreviewInSolutionExplorer": false
 }
