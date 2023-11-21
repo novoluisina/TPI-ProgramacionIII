@@ -60,10 +60,10 @@ namespace TPI_ProgramacionIII.DBContexts
             modelBuilder.Entity<Admin>().HasData(
                 new Admin
                 {
-                    LastName = "Gomez",
-                    Name = "Nicolas",
-                    Email = "ngomez@gmail.com",
-                    UserName = "ngomez_admin",
+                    LastName = "Novo",
+                    Name = "Luisina",
+                    Email = "lnovo@gmail.com",
+                    UserName = "lnovo",
                     Password = "123456",
                     Id = 4,
                     Role = "admin"

@@ -5,7 +5,7 @@ namespace TPI_ProgramacionIII.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SalesLineController : ControllerBase
+    public class SalesOrderLineController : ControllerBase
     {
     }
 }

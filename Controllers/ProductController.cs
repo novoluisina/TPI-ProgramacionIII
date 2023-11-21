@@ -101,16 +101,16 @@ namespace TPI_ProgramacionIII.Controllers
         public IActionResult UpdateProduct([FromRoute] int id, [FromBody] ProductPutDto product)
         {
             var productToUpdate = _productService.GetProductById(id);
+            if (productToUpdate == null)
+            {
+                return NotFound($"Producto con ID {id} no encontrado");
+            }
 
             try
             {
                 productToUpdate.Price = product.Price;
                 productToUpdate.Stock = product.Stock;
 
-                if (productToUpdate == null)
-                {
-                    return NotFound($"Producto con ID {id} no encontrado");
-                }
                 productToUpdate = _productService.UpdateProduct(productToUpdate);
                 return Ok($"Producto actualizado exitosamente");
             }

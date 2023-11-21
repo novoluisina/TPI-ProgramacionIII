@@ -20,14 +20,14 @@ namespace TPI_ProgramacionIII.Controllers
             _adminService = adminService;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllAdmins")]
         public IActionResult GetAdmins()
         {
             var admins = _adminService.GetAdmins();
-            
+
             try
             {
-                return Ok(admins);
+                return Ok(admins.Where(x=>x.State==true)); //solo los activos
             }
             catch (Exception ex)
             {
@@ -37,7 +37,7 @@ namespace TPI_ProgramacionIII.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("GetAdminById{id}")]
         public IActionResult GetAdminById(int id)
         {
             var admin = _adminService.GetAdminById(id);
@@ -50,49 +50,90 @@ namespace TPI_ProgramacionIII.Controllers
             return Ok(admin);
         }
 
-        [HttpPost("CreateAdmin")]
-        public IActionResult CreateAdmin([FromBody] AdminDto dto)
+        [HttpPost("CreateNewAdmin")]
+        public IActionResult CreateAdmin([FromBody] AdminPostDto dto)
         {
-            var admin = new Admin()
+            if (dto.Name == "string" || dto.LastName == "string" || dto.Email== "string" || dto.UserName=="string" || dto.Password=="string")
             {
-                Email = dto.Email,
-                Name = dto.Name,
-                LastName = dto.LastName,
-                Password = dto.Password,
-                UserName = dto.UserName,
-                UserType = "Admin"
-            };
-            int id = _userService.CreateUser(admin);
-            return Ok($"Admin creado exitosamente con id: {id}");
+                return BadRequest("Admin no creado, por favor completar los campos");
+            }
+            try
+            {
+                var admin = new Admin()
+                {
+                    Email = dto.Email,
+                    Name = dto.Name,
+                    LastName = dto.LastName,
+                    Password = dto.Password,
+                    UserName = dto.UserName,
+                    UserType = "Admin"
+                };
+                int id = _userService.CreateUser(admin);
+                return Ok($"Admin creado exitosamente con id: {id}");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
-         
+
+
+        [HttpDelete("DeleteAdmin/{id}")]
+        public IActionResult DeleteAdmin(int id)
+        {
+            try
+            {
+                var existingAdmin = _adminService.GetAdminById(id);
+                if (existingAdmin == null)
+                {
+                    return NotFound($"No se encontró ningún Admin con el ID: {id}");
+                }
+                _userService.DeleteUser(id);
+                return Ok($"Admin con ID: {id} eliminado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpPut("UpdateAdmin{id}")]
+        public IActionResult UpdateAdmin([FromRoute] int id, [FromBody] AdminPutDto admin)
+        {
+            if (admin.Email == "string" || admin.UserName == "string" || admin.Password == "string")
+            {
+                return BadRequest("Admin no actualizado, por favor completar los campos");
+            }
+            var adminToUpdate=_adminService.GetAdminById(id);
+            if (adminToUpdate == null)
+            {
+                return NotFound($"Admin con ID {id} no encontrado");
+            }
+            try
+            {
+                adminToUpdate.Email = admin.Email;
+                adminToUpdate.Password = admin.Password;
+                adminToUpdate.UserName = admin.UserName;
+
+                adminToUpdate = _adminService.UpdateAdmin(adminToUpdate);
+                return Ok($"Admin actualizado exitosamente");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al actualizar el producto: {ex.Message}");
+            }
+        }
+
+    }
+
 }
-        //[HttpDelete("DeleteCustomer/{username}")]
-        //public IActionResult DeleteCustomer(string username)
-        //{
-        //    User existingCustomer = _userService.GetUserByUsername(username);
-        //    if (existingCustomer == null)
-        //    {
-        //        return NotFound($"No se encontró un cliente con el nombre de usuario '{username}'.");
-        //    }
-        //    _userService.DeleteUser(username);
-        //    return Ok("Cliente borrado exitosamente");
-        //}
 
-        
 
-        //[HttpDelete("DeleteAdmin/{username}")]
-        //public IActionResult DeleteAdmin(string username)
-        //{
-        //    User existingCustomer = _userService.GetUserByUsername(username);
-        //    if (existingCustomer == null)
-        //    {
-        //        return NotFound($"No se encontró un admin con el nombre de usuario '{username}'.");
-        //    }
-        //    _userService.DeleteUser(username);
-        //    return Ok("Admin borrado exitosamente");
-        //}
 
-}
+
+
+
 
 

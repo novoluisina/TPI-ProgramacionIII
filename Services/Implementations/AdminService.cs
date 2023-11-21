@@ -23,12 +23,11 @@ namespace TPI_ProgramacionIII.Services.Implementations
             return _context.Admins.FirstOrDefault(p => p.Id == id);
         }
 
-        public int CreateAdmin(Admin admin)
+        public Admin UpdateAdmin(Admin admin)
         {
-            _context.Admins.Add(admin);
+            _context.Update(admin);
             _context.SaveChanges();
-
-            return (admin.Id);
+            return admin;
         }
     }
 }

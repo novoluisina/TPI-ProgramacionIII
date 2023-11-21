@@ -17,32 +17,50 @@ namespace TPI_ProgramacionIII.Services.Implementations
 
         public User? GetUserByEmail(string email)
         {
-            return _context.Users.SingleOrDefault(u => u.Email == email);
+            return _context.Users.FirstOrDefault(u => u.Email == email);
         }
 
         public BaseResponse UserValidation(string email, string password)
         {
             BaseResponse response = new BaseResponse();
-            User? userForLogin = _context.Users.SingleOrDefault(u => u.Email == email);
+
+            if (email=="string" || password=="string")
+            {
+                response.Result = false;
+                response.Message = "Por favor, ingrese email y contraseña";
+                return response;
+            }
+
+            User? userForLogin = _context.Users.FirstOrDefault(u => u.Email == email);
             if (userForLogin != null)
             {
                 if (userForLogin.Password == password)
                 {
                     response.Result = true;
-                    response.Message = "loging Succesfull";
+                    response.Message = "registro exitoso";
                 }
                 else
                 {
                     response.Result = false;
-                    response.Message = "wrong password";
+                    response.Message = "contraseña incorrecta";
                 }
             }
             else
             {
                 response.Result = false;
-                response.Message = "wrong email";
+                response.Message = "email incorrecto";
             }
             return response;
+        }
+
+
+        public void DeleteUser(int Id)
+        {
+            User? userToDelete = _context.Users.FirstOrDefault(u => u.Id == Id);
+            userToDelete.State = false;
+            _context.Update(userToDelete);
+            _context.SaveChanges();
+
         }
 
         public int CreateUser(User user)
@@ -52,21 +70,6 @@ namespace TPI_ProgramacionIII.Services.Implementations
             return user.Id;
         }
 
-        public void UpdateUser(User user)
-        {
-            _context.Update(user);
-            _context.SaveChanges();
-
-        }
-
-        public void DeleteUser(int userId)
-        {
-            User? userToDelete = _context.Users.FirstOrDefault(u => u.Id == userId);
-            userToDelete.State = false;
-            _context.Update(userToDelete);
-            _context.SaveChanges();
-
-        }
 
     }
 }

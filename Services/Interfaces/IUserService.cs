@@ -8,7 +8,6 @@ namespace TPI_ProgramacionIII.Services.Interfaces
         public BaseResponse UserValidation(string username, string password);
         public User? GetUserByEmail(string username);
         void DeleteUser(int userId);
-        void UpdateUser(User user);
         int CreateUser(User user);
     }
 }

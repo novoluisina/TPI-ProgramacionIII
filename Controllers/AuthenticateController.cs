@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -26,15 +26,19 @@ namespace TPI_ProgramacionIII.Controllers
         [HttpPost]
         public IActionResult Authenticate([FromBody] CredentialsDto credentialsDto)
         {
-            //valido el usuario
+            //validar usuario
             BaseResponse userValidationResult = _userService.UserValidation(credentialsDto.Email, credentialsDto.Password);
-            if (userValidationResult.Message == "wrong email")
+            if (userValidationResult.Message == "email incorrecto")
             {
                 return BadRequest(userValidationResult.Message);
             }
-            else if (userValidationResult.Message == "wrong password")
+            else if (userValidationResult.Message == "contraseña incorrecta")
             {
-                return Unauthorized();
+                return Unauthorized(userValidationResult.Message);
+            }
+            else if (userValidationResult.Message == "Por favor, ingrese email y contraseña")
+            {
+                return BadRequest(userValidationResult.Message);
             }
             if (userValidationResult.Result)
             {
