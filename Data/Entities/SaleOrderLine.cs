@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TPI_ProgramacionIII.Data.Entities
 {
-    public class SalerOrderLine
+    public class SaleOrderLine
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

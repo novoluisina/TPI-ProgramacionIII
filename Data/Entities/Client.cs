@@ -3,6 +3,6 @@
     public class Client : User
     {
         public string Address { get; set; }
-        public ICollection<SaleOrder> SalesOrders { get; set; } = new List<SaleOrder>();
+        public ICollection<SaleOrder> SaleOrders { get; set; } = new List<SaleOrder>();
     }
 }

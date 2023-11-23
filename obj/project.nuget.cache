@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "2QWTonvBwFRWL2rTDEfc5F4w9zKXAlJM8CtG9pQwlT4Ed5XFdMKEVQAvw0GscgfQy2NHJMB7lzrhNN1R96hxIg==",
+  "dgSpecHash": "wzczV+kmLmw3ybc0NOeZzHM0gCjMkdA7dfQ1cp9+KzOLBTT/SX/fGyBVpRjYwyl6Ide9zQHqijg1daj6KgtafA==",
   "success": true,
   "projectFilePath": "C:\\Luisina TUP\\ProgramacionIII\\TPI-ProgramacionIII\\E-Commerce.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.24\\microsoft.aspnetcore.authentication.jwtbearer.6.0.24.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.24\\microsoft.aspnetcore.jsonpatch.6.0.24.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.24\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.24.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.25\\microsoft.aspnetcore.jsonpatch.6.0.25.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.25\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.25.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.13\\microsoft.data.sqlite.core.7.0.13.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.13\\microsoft.entityframeworkcore.7.0.13.nupkg.sha512",

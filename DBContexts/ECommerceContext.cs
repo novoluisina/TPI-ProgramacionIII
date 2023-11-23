@@ -12,7 +12,7 @@ namespace TPI_ProgramacionIII.DBContexts
         public DbSet<Client> Clients { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<SaleOrder> SaleOrders { get; set; }
-        public DbSet<SalerOrderLine> SaleOrderLines { get; set; }
+        public DbSet<SaleOrderLine> SaleOrderLines { get; set; }
         public DbSet<Product> Products { get; set; }
        
 
@@ -100,18 +100,18 @@ namespace TPI_ProgramacionIII.DBContexts
 
             // // Relación entre Cliente y OrdenDeVenta (uno a muchos)
             modelBuilder.Entity<Client>()
-           .HasMany(c => c.SalesOrders)
+           .HasMany(c => c.SaleOrders)
            .WithOne(o => o.Client)
            .HasForeignKey(o => o.ClientId);
 
             // Relación entre OrdenDeVenta y LineaDeVenta (uno a muchos)
             modelBuilder.Entity<SaleOrder>()
-                .HasMany(o => o.SalesLines)
+                .HasMany(o => o.SaleOrderLines)
                 .WithOne(l => l.SaleOrder)
                 .HasForeignKey(l => l.SaleOrderId);
 
 
-            modelBuilder.Entity<SalerOrderLine>()
+            modelBuilder.Entity<SaleOrderLine>()
                 .HasOne(sol => sol.Product)
                 .WithMany() //vacío porque no me interesa establecer esa relación
                 .HasForeignKey(sol => sol.ProductId);

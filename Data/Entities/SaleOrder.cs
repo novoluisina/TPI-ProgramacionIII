@@ -12,6 +12,6 @@ namespace TPI_ProgramacionIII.Data.Entities
         [ForeignKey("ClientId")]
         public int ClientId { get; set; } // Clave foránea para la relación con Cliente
         public Client Client { get; set; }
-        public ICollection<SalerOrderLine> SalesLines { get; set; } = new List<SalerOrderLine>();
+        public ICollection<SaleOrderLine> SaleOrderLines { get; set; } = new List<SaleOrderLine>();
     }
 }

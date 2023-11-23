@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TPI_ProgramacionIII.Data.Models
 {
-    public class ClientDto
+    public class ClientPostDto
     {
         public string Name { get; set; }
         public string LastName { get; set; }

@@ -18,7 +18,7 @@ namespace TPI_ProgramacionIII.Services.Implementations
             return _context.Users.Where(p => p.UserType == "Admin").ToList();
         }
 
-        public Admin GetAdminById(int id)
+        public Admin? GetAdminById(int id)
         {
             return _context.Admins.FirstOrDefault(p => p.Id == id);
         }

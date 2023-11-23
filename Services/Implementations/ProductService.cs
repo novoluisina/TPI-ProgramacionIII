@@ -22,9 +22,14 @@ namespace TPI_ProgramacionIII.Services.Implementations
             return _context.Products.ToList();
         }
 
-        public Product GetProductById(int id)
+        public Product? GetProductById(int id)
         {
             return _context.Products.FirstOrDefault(p => p.Id == id);
+        }
+
+        public Product? GetProductByName(string name)
+        {
+            return _context.Products.FirstOrDefault(p => p.Name == name);
         }
 
         public int CreateProduct(Product product)

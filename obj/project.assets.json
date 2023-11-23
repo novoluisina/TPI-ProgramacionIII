@@ -34,7 +34,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Microsoft.AspNetCore.JsonPatch/6.0.24": {
+      "Microsoft.AspNetCore.JsonPatch/6.0.25": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -51,10 +51,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/6.0.24": {
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/6.0.25": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.JsonPatch": "6.0.24",
+          "Microsoft.AspNetCore.JsonPatch": "6.0.25",
           "Newtonsoft.Json": "13.0.1",
           "Newtonsoft.Json.Bson": "1.0.2"
         },
@@ -920,10 +920,10 @@
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.JsonPatch/6.0.24": {
-      "sha512": "2a21nOR6gdPUQdRcrQYdC3Oi7QKelIPl+/aanJKo8uL1gNkJI4TnMJerfWp9tp1O2hOAZy1avoSprlt/rHDHdw==",
+    "Microsoft.AspNetCore.JsonPatch/6.0.25": {
+      "sha512": "65JTjUGoisNR0pmLr3r6clbi6kguLlDqraNeWpwr73e7HunGt0NnfZBpjsRrmNeIcJYqyGU8WN0Hi2Xf4U7GNg==",
       "type": "package",
-      "path": "microsoft.aspnetcore.jsonpatch/6.0.24",
+      "path": "microsoft.aspnetcore.jsonpatch/6.0.25",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -935,14 +935,14 @@
         "lib/net6.0/Microsoft.AspNetCore.JsonPatch.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.xml",
-        "microsoft.aspnetcore.jsonpatch.6.0.24.nupkg.sha512",
+        "microsoft.aspnetcore.jsonpatch.6.0.25.nupkg.sha512",
         "microsoft.aspnetcore.jsonpatch.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/6.0.24": {
-      "sha512": "GBXLS59fDeIzjRHJ2OsYPFFU0zXfIPsJmOI95Q5a3Pvnb0afjeYKFMKOEwL5wb4pwWP8JeJZvM5ZhDKCeCRjWQ==",
+    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/6.0.25": {
+      "sha512": "dBDJsmzQMRgcBy0U5lvosHls5aLILL+0tNx+eat7vgcfNzpL2j9Cd1+Pg5j+xy+lZZjyf9MQbMdNp4vE6E1L4A==",
       "type": "package",
-      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/6.0.24",
+      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/6.0.25",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -950,7 +950,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net6.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll",
         "lib/net6.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.xml",
-        "microsoft.aspnetcore.mvc.newtonsoftjson.6.0.24.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.newtonsoftjson.6.0.25.nupkg.sha512",
         "microsoft.aspnetcore.mvc.newtonsoftjson.nuspec"
       ]
     },
@@ -2324,7 +2324,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.24",
-      "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 6.0.24",
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 6.0.25",
       "Microsoft.EntityFrameworkCore >= 7.0.13",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.13",
       "Microsoft.EntityFrameworkCore.Relational >= 7.0.13",
@@ -2386,7 +2386,7 @@
           },
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
             "target": "Package",
-            "version": "[6.0.24, )"
+            "version": "[6.0.25, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",

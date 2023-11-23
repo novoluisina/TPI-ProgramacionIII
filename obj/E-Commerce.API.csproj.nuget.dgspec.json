@@ -51,7 +51,7 @@
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
-              "version": "[6.0.24, )"
+              "version": "[6.0.25, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
