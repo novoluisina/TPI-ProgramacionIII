@@ -20,6 +20,7 @@ namespace TPI_ProgramacionIII.Services.Implementations
             return _context.SaleOrders
                 .Include(so => so.Client)
                 .Include(so => so.SaleOrderLines)
+                .ThenInclude(so => so.Product)
                 .Where(r => r.ClientId == clientId)
                 .ToList();
         }
@@ -29,6 +30,7 @@ namespace TPI_ProgramacionIII.Services.Implementations
             return _context.SaleOrders
                 .Include(r => r.Client)
                 .Include(r=>r.SaleOrderLines)
+                .ThenInclude(so => so.Product)
                 .SingleOrDefault(x => x.Id == Id);
         }
 
@@ -37,6 +39,7 @@ namespace TPI_ProgramacionIII.Services.Implementations
             return _context.SaleOrders
                 .Include(r => r.Client)
                 .Include(r => r.SaleOrderLines)
+                .ThenInclude(so => so.Product)
                 .Where(r => r.Date.Date == date.Date)
                 .ToList();
         }

@@ -153,7 +153,7 @@ namespace TPI_ProgramacionIII.Controllers
         public IActionResult UpdateSaleOrder([FromRoute] int id, [FromBody] SaleOrderDto dto)
         {
              string role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value.ToString();
-             if (role == "Admin" || role == "Client")
+             if (role == "Admin")
              {
                 var soToUpdate = _saleOrderService.GetOne(id);
                 if (soToUpdate == null)

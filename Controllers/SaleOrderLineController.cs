@@ -99,7 +99,7 @@ namespace TPI_ProgramacionIII.Controllers
         public IActionResult CreateSaleOrderLine([FromBody] SaleOrderLineDto dto)
         {
              string role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value.ToString();
-             if (role == "Admin")
+             if (role == "Admin" || role == "Client")
              {
                 if (dto.ProductId==0 || dto.SaleOrderId==0 || dto.Amount==0 || dto.UnitPrice==0)
                 {
@@ -131,7 +131,7 @@ namespace TPI_ProgramacionIII.Controllers
         public IActionResult DeleteSaleOrderLine([FromRoute] int id)
         {
              string role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value.ToString();
-             if (role == "Admin")
+             if (role == "Admin" || role == "Client")
              {
                 try
                 {
@@ -158,7 +158,7 @@ namespace TPI_ProgramacionIII.Controllers
         public IActionResult UpdateSaleOrderLine([FromRoute] int id, [FromBody] SaleOrderLineDto dto)
         {
             string role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value.ToString();
-            if (role == "Admin")
+            if (role == "Admin" || role=="Client")
             {
                 var solToUpdate = _solService.GetOne(id);
                 if (solToUpdate == null)
