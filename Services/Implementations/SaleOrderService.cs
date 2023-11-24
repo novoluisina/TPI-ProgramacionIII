@@ -25,7 +25,7 @@ namespace TPI_ProgramacionIII.Services.Implementations
                 .ToList();
         }
 
-        public SaleOrder? GetOne(int Id) //una por id 
+        public SaleOrder? GetOne(int Id)  
         {
             return _context.SaleOrders
                 .Include(r => r.Client)
@@ -34,7 +34,7 @@ namespace TPI_ProgramacionIII.Services.Implementations
                 .SingleOrDefault(x => x.Id == Id);
         }
 
-        public List<SaleOrder> GetAllByDate(DateTime date) //todas por fecha
+        public List<SaleOrder> GetAllByDate(DateTime date) 
         {
             return _context.SaleOrders
                 .Include(r => r.Client)

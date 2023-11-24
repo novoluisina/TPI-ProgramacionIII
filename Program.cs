@@ -34,7 +34,7 @@ builder.Services.AddSwaggerGen(setupAction =>
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.SecurityScheme,
-                    Id = "ECommerceApiBearerAuth" } //Tiene que coincidir con el id seteado arriba en la definición
+                    Id = "ECommerceApiBearerAuth" } 
                 }, new List<string>() }
     });
 }); ;
@@ -54,8 +54,8 @@ builder.Services.AddScoped<ISaleOrderLineService, SaleOrderLineService>();
 
 //builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntenticación que tenemos que elegir después en PostMan para pasarle el token
-    .AddJwtBearer(options => //Acá definimos la configuración de la autenticación. le decimos qué cosas queremos comprobar. La fecha de expiración se valida por defecto.
+builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntenticación 
+    .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new()
         {

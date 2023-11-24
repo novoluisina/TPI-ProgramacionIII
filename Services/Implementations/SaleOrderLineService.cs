@@ -14,7 +14,7 @@ namespace TPI_ProgramacionIII.Services.Implementations
             _context = context;
         }
 
-        public List<SaleOrderLine> GetAllBySaleOrder(int saleOrderId) //todas las sol por cada so
+        public List<SaleOrderLine> GetAllBySaleOrder(int saleOrderId) 
         {
             return _context.SaleOrderLines
                 .Include(sol => sol.Product)
@@ -24,7 +24,7 @@ namespace TPI_ProgramacionIII.Services.Implementations
                 .ToList();
         }
 
-        public List<SaleOrderLine> GetAllByProduct(int productId) //todas las sol por cada producto
+        public List<SaleOrderLine> GetAllByProduct(int productId) 
         {
             return _context.SaleOrderLines
                 .Include(sol => sol.Product)
